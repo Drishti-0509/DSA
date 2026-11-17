@@ -5,22 +5,19 @@ public:
             return false;
         }
 
-unordered_map<int,int>mp ;
+int freq[26] = {0} ;
+for(int i = 0 ;i<s.size() ;i++){
+    freq[s[i]-'a']++ ;
+}
+for(int i=0 ;i<t.size() ;i++){
+freq[t[i] -'a']-- ;
+}
 
-for(int i =0;i<s.size() ;i++){
-mp[s[i]]++ ;
-     } 
-     for(int i=0 ;i<t.size() ;i++){
-        if(mp.find(t[i]) != mp.end()){
-            mp[t[i]]-- ;
-        }
-     } 
-     for(auto it:mp){
-        if(it.second != 0){
-            return false;
-        }
-     }
-     return true;
-
+for(int i = 0;i<26 ;i++){
+    if(freq[i]!=0){
+        return false;
+    }
+}
+return true;
     }
 };
